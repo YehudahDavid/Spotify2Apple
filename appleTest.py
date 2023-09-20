@@ -16,6 +16,8 @@ apple_key_id = "2TQCT3A8G5"
 apple_team_id = "27YLH627PZ"
 
 am = applemusicpy.AppleMusic(secret_key=apple_private_key, key_id=apple_key_id, team_id=apple_team_id)
-results = am.search('travis scott', types=['albums'], limit=5)
-for item in results['results']['albums']['data']:
-    print(item['attributes']['name'])
+chosen_playlist = am.playlist_relationship(playlist_id="pl.u-xlyNEdkuJ6Le1a",relationship="tracks")
+for song in chosen_playlist['data']:
+    print(song["attributes"]["name"])
+    print(song["attributes"]["isrc"])
+    print(song['id'])
